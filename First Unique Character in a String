@@ -1,0 +1,22 @@
+function firstUniqeChar(s) {
+  const charCount = new Map();
+
+  [...s].forEach(ch => {
+    charCount.set(ch, charCount.has(ch) ? charCount.get(ch) + 1 : 1);
+  });
+
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if (charCount.get(ch) === 1) {
+      return i;
+    }
+  }
+  return -1;
+}
+
+console.log(firstUniqeChar("leetcode")); 
+// Output: 0
+console.log(firstUniqeChar("loveleetcode"));
+// Output: 2
+console.log(firstUniqeChar("aabb"));
+// Output: -1
